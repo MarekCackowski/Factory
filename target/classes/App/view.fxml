@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane fx:id="root" dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Controller">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="158.0">
+         <children>
+            <TabPane prefHeight="498.0" prefWidth="235.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Quantity">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="15.0" layoutY="15.0" text="Amount of material 1:" />
+                              <TextField fx:id="material1" layoutX="15.0" layoutY="35.0" onInputMethodTextChanged="#qMaterial1" onKeyPressed="#qMaterial1" onKeyReleased="#qMaterial1" onKeyTyped="#qMaterial1" promptText="150" />
+                              <Label layoutX="15.0" layoutY="65.0" text="Amount of material 2:" />
+                              <TextField fx:id="material2" layoutX="15.0" layoutY="85.0" onInputMethodTextChanged="#qMaterial2" onKeyPressed="#qMaterial2" onKeyReleased="#qMaterial2" onKeyTyped="#qMaterial2" promptText="150" />
+                              <Label layoutX="15.0" layoutY="115.0" text="Trolley capacity [packages]:" />
+                              <TextField fx:id="trolleyCapacity" layoutX="15.0" layoutY="135.0" onInputMethodTextChanged="#qTrolleyCapacity" onKeyPressed="#qTrolleyCapacity" onKeyReleased="#qTrolleyCapacity" onKeyTyped="#qTrolleyCapacity" promptText="10" />
+                              <Label layoutX="15.0" layoutY="165.0" text="Car capacity [materials]:" />
+                              <TextField fx:id="carCapacity" layoutX="15.0" layoutY="185.0" onInputMethodTextChanged="#qCarCapacity" onKeyPressed="#qCarCapacity" onKeyReleased="#qCarCapacity" onKeyTyped="#qCarCapacity" promptText="100" />
+                              <Label layoutX="15.0" layoutY="215.0" text="Lower limit for material 1:" />
+                              <TextField fx:id="lowerLimit1" layoutX="15.0" layoutY="235.0" onInputMethodTextChanged="#qLowerLimit1" onKeyPressed="#qLowerLimit1" onKeyReleased="#qLowerLimit1" onKeyTyped="#qLowerLimit1" promptText="50" />
+                              <Label layoutX="15.0" layoutY="265.0" text="Lower limit for material 2:" />
+                              <TextField fx:id="lowerLimit2" layoutX="15.0" layoutY="285.0" onInputMethodTextChanged="#qLowerLimit2" onKeyPressed="#qLowerLimit2" onKeyReleased="#qLowerLimit2" onKeyTyped="#qLowerLimit2" promptText="50" />
+                              <Label layoutX="14.0" layoutY="334.0" />
+                              <Button fx:id="stop1" disable="true" layoutX="15.0" layoutY="415.0" mnemonicParsing="false" onAction="#stop" prefHeight="25.0" prefWidth="60.0" text="Stop" />
+                              <Button fx:id="save1" disable="true" layoutX="160.0" layoutY="415.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="60.0" text="Save" />
+                              <Button fx:id="start1" layoutX="88.0" layoutY="415.0" mnemonicParsing="false" onAction="#start" prefHeight="25.0" prefWidth="60.0" text="Start" />
+                              <TextField fx:id="dumpCapacity" layoutX="15.0" layoutY="335.0" onInputMethodTextChanged="#qDumpCapacity" onKeyPressed="#qDumpCapacity" onKeyReleased="#qDumpCapacity" onKeyTyped="#qDumpCapacity" promptText="25" />
+                              <Label layoutX="15.0" layoutY="315.0" text="Dump capacity [materials]:" />
+                              <Label layoutX="15.0" layoutY="365.0" text="Products per package:" />
+                              <TextField fx:id="packageCapacity" layoutX="15.0" layoutY="385.0" onInputMethodTextChanged="#qPackageCapacity" onKeyPressed="#qPackageCapacity" onKeyReleased="#qPackageCapacity" onKeyTyped="#qPackageCapacity" promptText="5" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Duration">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="15.0" layoutY="15.0" text="Production Time [s]:" />
+                              <TextField fx:id="productionTimeMin" layoutX="15.0" layoutY="35.0" onInputMethodTextChanged="#tProductionTimeMin" onKeyPressed="#tProductionTimeMin" onKeyReleased="#tProductionTimeMin" onKeyTyped="#tProductionTimeMin" prefHeight="25.0" prefWidth="70.0" promptText="10" />
+                              <TextField fx:id="productionTimeMax" layoutX="120.0" layoutY="35.0" onInputMethodTextChanged="#tProductionTimeMax" onKeyPressed="#tProductionTimeMax" onKeyReleased="#tProductionTimeMax" onKeyTyped="#tProductionTimeMax" prefHeight="25.0" prefWidth="70.0" promptText="20" />
+                              <Label layoutX="96.0" layoutY="22.0" prefHeight="45.0" prefWidth="13.0" text="-">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="15.0" layoutY="65.0" text="Trolley waiting time [s]:" />
+                              <Label layoutX="96.0" layoutY="72.0" text="-">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="trolleyWaitingTimeMin" layoutX="15.0" layoutY="85.0" onInputMethodTextChanged="#tTrolleyWaitingTimeMin" onKeyPressed="#tTrolleyWaitingTimeMin" onKeyReleased="#tTrolleyWaitingTimeMin" onKeyTyped="#tTrolleyWaitingTimeMin" prefHeight="25.0" prefWidth="70.0" promptText="20" />
+                              <TextField fx:id="trolleyWaitingTimeMax" layoutX="120.0" layoutY="85.0" onInputMethodTextChanged="#tTrolleyWaitingTimeMax" onKeyPressed="#tTrolleyWaitingTimeMax" onKeyReleased="#tTrolleyWaitingTimeMax" onKeyTyped="#tTrolleyWaitingTimeMax" prefHeight="25.0" prefWidth="70.0" promptText="25" />
+                              <Label layoutX="15.0" layoutY="115.0" text="Trolley collection time [s]:" />
+                              <Label layoutX="96.0" layoutY="122.0" text="-">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="collectionTimeMin" layoutX="15.0" layoutY="135.0" onInputMethodTextChanged="#tCollectionTimeMin" onKeyPressed="#tCollectionTimeMin" onKeyReleased="#tCollectionTimeMin" onKeyTyped="#tCollectionTimeMin" prefHeight="25.0" prefWidth="70.0" promptText="15" />
+                              <TextField fx:id="collectionTimeMax" layoutX="120.0" layoutY="135.0" onInputMethodTextChanged="#tCollectionTimeMax" onKeyPressed="#tCollectionTimeMax" onKeyReleased="#tCollectionTimeMax" onKeyTyped="#tCollectionTimeMax" prefHeight="25.0" prefWidth="70.0" promptText="20" />
+                              <Label layoutX="15.0" layoutY="165.0" text="First route completion time [s]:" />
+                              <Label layoutX="96.0" layoutY="172.0" text="-">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="firstRouteTimeMin" layoutX="15.0" layoutY="185.0" onInputMethodTextChanged="#tFirstRouteTimeMin" onKeyPressed="#tFirstRouteTimeMin" onKeyReleased="#tFirstRouteTimeMin" onKeyTyped="#tFirstRouteTimeMin" prefHeight="25.0" prefWidth="70.0" promptText="10" />
+                              <TextField fx:id="firstRouteTimeMax" layoutX="120.0" layoutY="185.0" onInputMethodTextChanged="#tFirstRouteTimeMax" onKeyPressed="#tFirstRouteTimeMax" onKeyReleased="#tFirstRouteTimeMax" onKeyTyped="#tFirstRouteTimeMax" prefHeight="25.0" prefWidth="70.0" promptText="15" />
+                              <Button fx:id="stop2" disable="true" layoutX="15.0" layoutY="415.0" mnemonicParsing="false" onAction="#stop" prefHeight="25.0" prefWidth="60.0" text="Stop" />
+                              <Button fx:id="start2" layoutX="88.0" layoutY="415.0" mnemonicParsing="false" onAction="#start" prefHeight="25.0" prefWidth="60.0" text="Start" />
+                              <Button fx:id="save2" disable="true" layoutX="160.0" layoutY="415.0" mnemonicParsing="false" onAction="#save" prefHeight="25.0" prefWidth="60.0" text="Save" />
+                              <Label layoutX="15.0" layoutY="215.0" text="Second route completion time [s]:" />
+                              <Label layoutX="96.0" layoutY="222.0" text="-">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="secondRouteTimeMin" layoutX="15.0" layoutY="235.0" onInputMethodTextChanged="#tSecondRouteTimeMin" onKeyPressed="#tSecondRouteTimeMin" onKeyReleased="#tSecondRouteTimeMin" onKeyTyped="#tSecondRouteTimeMin" prefHeight="25.0" prefWidth="70.0" promptText="10" />
+                              <TextField fx:id="secondRouteTimeMax" layoutX="120.0" layoutY="235.0" onInputMethodTextChanged="#tSecondRouteTimeMax" onKeyPressed="#tSecondRouteTimeMax" onKeyReleased="#tSecondRouteTimeMax" onKeyTyped="#tSecondRouteTimeMax" prefHeight="25.0" prefWidth="70.0" promptText="15" />
+                              <Label layoutX="15.0" layoutY="265.0" text="Production time modifier:" />
+                              <Slider fx:id="productionTimeModifier" blockIncrement="0.1" disable="true" layoutX="15.0" layoutY="285.0" majorTickUnit="0.5" max="2.0" min="0.5" minorTickCount="4" onMouseClicked="#productionModifier" onMouseDragged="#productionModifier" prefHeight="20.0" prefWidth="175.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+                              <Label layoutX="15.0" layoutY="325.0" text="Waiting time modifier:" />
+                              <Slider fx:id="waitingTimeModifier" blockIncrement="0.1" disable="true" layoutX="15.0" layoutY="345.0" majorTickUnit="0.5" max="2.0" min="0.5" minorTickCount="4" onMouseClicked="#waitingModifier" onMouseDragged="#waitingModifier" prefHeight="20.0" prefWidth="175.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+    <AnchorPane fx:id="czesc_graficzna" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d3" height="30.0" layoutX="240.0" layoutY="45.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d3" height="30.0" layoutX="240.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d3" height="30.0" layoutX="240.0" layoutY="155.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d3" height="30.0" layoutX="240.0" layoutY="210.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d3d3d3" height="30.0" layoutX="240.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" width="140.0" />
+            <Line endX="83.0" layoutX="157.0" layoutY="60.0" startX="-17.0" startY="93.0" />
+            <Line endX="72.0" endY="45.0" layoutX="168.0" layoutY="70.0" startX="-8.0" startY="83.0" />
+            <Line endX="72.0" endY="100.0" layoutX="168.0" layoutY="70.0" startX="-8.0" startY="100.0" />
+            <Line endX="72.0" endY="155.0" layoutX="168.0" layoutY="70.0" startX="-8.0" startY="117.0" />
+            <Label layoutX="321.0" layoutY="396.0" text="Waiting..." />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="LIGHTGRAY" height="10.0" layoutX="305.0" layoutY="415.0" stroke="BLACK" strokeType="INSIDE" width="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="97.0" layoutY="-35.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="97.0" layoutY="20.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="132.0" layoutY="-35.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="167.0" layoutY="-35.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="132.0" layoutY="20.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="167.0" layoutY="20.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="97.0" layoutY="75.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="132.0" layoutY="75.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="167.0" layoutY="75.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="97.0" layoutY="130.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="132.0" layoutY="130.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="167.0" layoutY="130.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="97.0" layoutY="185.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="132.0" layoutY="185.0" startX="178.0" startY="80.0" />
+            <Line endX="178.0" endY="110.0" layoutX="167.0" layoutY="185.0" startX="178.0" startY="80.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#061f36" height="106.0" layoutX="123.0" layoutY="183.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="35.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="34.0" layoutX="120.0" layoutY="153.0" stroke="BLACK" strokeType="INSIDE" width="40.0" />
+            <Line endX="73.0" endY="210.0" layoutX="167.0" layoutY="70.0" startX="-27.0" startY="117.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#061f36" height="346.0" layoutX="412.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="25.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="379.0" layoutY="270.0" stroke="BLACK" strokeType="INSIDE" width="35.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="379.0" layoutY="215.0" stroke="BLACK" strokeType="INSIDE" width="35.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="379.0" layoutY="160.0" stroke="BLACK" strokeType="INSIDE" width="35.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="379.0" layoutY="105.0" stroke="BLACK" strokeType="INSIDE" width="35.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="379.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="35.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="RED" height="60.0" layoutX="395.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#061f36" height="106.0" layoutX="54.0" layoutY="289.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="35.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#061f36" height="106.0" layoutX="193.0" layoutY="289.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="35.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#061f36" height="35.0" layoutX="54.0" layoutY="281.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="174.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00ff0d" height="60.0" layoutX="41.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#008cff" height="60.0" layoutX="180.0" layoutY="390.0" stroke="BLACK" strokeType="INSIDE" width="60.0" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
